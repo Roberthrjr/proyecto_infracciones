@@ -1,5 +1,6 @@
 # Importamos el modulo models
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Creamos el modelo Inspector
 class InspectorModelo(models.Model):
@@ -7,6 +8,7 @@ class InspectorModelo(models.Model):
     id = models.AutoField(primary_key=True)
     nombres = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
+    foto = CloudinaryField('foto', null=True, blank=True)
     tipo_documento = models.CharField(max_length=20)
     numero_documento = models.CharField(max_length=20, unique=True)
     ESTADO_CHOICES = [
@@ -29,6 +31,7 @@ class ConductorModelo(models.Model):
     id = models.AutoField(primary_key=True)
     nombres = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
+    foto = CloudinaryField('foto', null=True, blank=True)
     tipo_documento = models.CharField(max_length=20)
     numero_documento = models.CharField(max_length=20, unique=True)
     codigo_licencia = models.CharField(max_length=20)

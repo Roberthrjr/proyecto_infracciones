@@ -1,6 +1,7 @@
 from pathlib import Path
 from os import environ
 from dotenv import load_dotenv
+from cloudinary import config
 
 # Cargando variables de entorno
 load_dotenv()
@@ -33,7 +34,8 @@ INSTALLED_APPS = [
     'infracciones',
     'rest_framework',
     'drf_yasg',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +130,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuracion de Cloudinary
+config(
+    cloud_name=environ.get('CLOUD_NAME'),
+    api_key=environ.get('API_KEY'),
+    api_secret=environ.get('API_SECRET'),
+)

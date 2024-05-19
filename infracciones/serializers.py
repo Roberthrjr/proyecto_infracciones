@@ -16,11 +16,31 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'password']
         extra_kwargs = {'password': {'write_only': True}}
+        
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+            email=validated_data['email'],
+            password=validated_data['password'],
+        )
+        
+        return user
     
     def to_representation(self, instance):
         return super().to_representation(instance)
+
+# Se define el serializer para el token
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    
+    def token(cls, user):
+        token = super().token(user)
+        token['email'] = user.email
+        return token
 
 # Se define el serializer para el modelo inspector
 class InspectorSerializer(serializers.ModelSerializer):
@@ -29,13 +49,17 @@ class InspectorSerializer(serializers.ModelSerializer):
         fields = '__all__'
     
     def to_representation(self, instance):
-        return super().to_representation(instance)
+        representation = super().to_representation(instance)
+        representation['foto'] = instance.foto.url
+        return representation
+
 
 # Se define el serializer para actualizar el modelo inspector
 class InspectorUpdateSerializer(serializers.ModelSerializer):
     # Campos opcionales
     nombres = serializers.CharField(required=False)
     apellidos = serializers.CharField(required=False)
+    foto = serializers.ImageField(required=False)
     tipo_documento = serializers.CharField(required=False)
     numero_documento = serializers.CharField(required=False)
     ESTADO_CHOICES = [
@@ -55,13 +79,16 @@ class ConductorSerializer(serializers.ModelSerializer):
         fields = '__all__'
     
     def to_representation(self, instance):
-        return super().to_representation(instance)
-
+        representation = super().to_representation(instance)
+        representation['foto'] = instance.foto.url
+        return representation
+    
 # Se define el serializer para actualizar el modelo conductor
 class ConductorUpdateSerializer(serializers.ModelSerializer):
     # Campos opcionales
     nombres = serializers.CharField(required=False)
     apellidos = serializers.CharField(required=False)
+    foto = serializers.ImageField(required=False)
     tipo_documento = serializers.CharField(required=False)
     numero_documento = serializers.CharField(required=False)
     codigo_licencia = serializers.CharField(required=False)

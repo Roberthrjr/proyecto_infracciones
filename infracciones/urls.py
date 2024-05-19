@@ -4,13 +4,16 @@ from .views import (
     UsuarioCreateView,
     UsuarioUpdateView,
     UsuarioDeleteView,
+    UsuarioLoginView,
     IspectorView,
     InspectorCreateView,
     InspectorUpdateView,
+    InspectorUploadFotoView,
     InspectorDeleteView,
     ConductorView,
     ConductorCreateView,
     ConductorUpdateView,
+    ConductorUploadFotoView,
     ConductorDeleteView,
     VehiculoView,
     VehiculoCreateView,
@@ -21,8 +24,11 @@ from .views import (
     ActaUpdateView,
     ActaDeleteView,
 )
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 urlpatterns = [
+    # path('token', TokenObtainPairView.as_view()),
+    path('usuarios/login', UsuarioLoginView.as_view()),
     path('usuarios/all', UsuarioView.as_view()),
     path('inspectores/all', IspectorView.as_view()),
     path('conductores/all', ConductorView.as_view()),
@@ -43,4 +49,6 @@ urlpatterns = [
     path('conductores/delete/<int:pk>', ConductorDeleteView.as_view()),
     path('vehiculos/delete/<int:pk>', VehiculoDeleteView.as_view()),
     path('actas/delete/<int:pk>', ActaDeleteView.as_view()),
+    path('inspectores/uploadfoto', InspectorUploadFotoView.as_view()),
+    path('conductores/uploadfoto', ConductorUploadFotoView.as_view()),
 ]
