@@ -1,4 +1,5 @@
 ### Django ###
+entorno_django
 *.log
 *.pot
 *.pyc
@@ -136,7 +137,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-entorno_django/
 
 # Spyder project settings
 .spyderproject
