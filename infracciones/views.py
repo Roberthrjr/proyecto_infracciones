@@ -30,7 +30,6 @@ class UsuarioView(generics.ListAPIView):
 
 # Se define la vista para crear un usuario
 class UsuarioCreateView(generics.CreateAPIView):
-    permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = UsuarioSerializer
     
