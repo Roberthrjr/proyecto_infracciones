@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'infracciones',
+    'corsheaders',
     'rest_framework',
     'drf_yasg',
     'rest_framework_simplejwt',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,3 +145,32 @@ config(
     api_key=environ.get('API_KEY'),
     api_secret=environ.get('API_SECRET'),
 )
+
+# Configuracion de Cors
+CORS_ORIGIN_ALLOW_ALL = True
+
+# Permitir metodos HTTP especificos
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+# Permitir Headers especificos
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+
+# Permitir el envio de credenciales
+CORS_ALLOW_CREDENTIALS = True
