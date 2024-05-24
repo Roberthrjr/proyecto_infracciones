@@ -28,6 +28,11 @@ class UsuarioView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UsuarioSerializer
 
+# Se define la vista para listar un usuario por id
+class UsuarioDetailView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UsuarioSerializer
+
 # Se define la vista para crear un usuario
 class UsuarioCreateView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -82,6 +87,11 @@ class UsuarioDeleteView(generics.DestroyAPIView):
  
 # Se define la vista para listar los inspectores
 class IspectorView(generics.ListAPIView):
+    queryset = InspectorModelo.objects.all()
+    serializer_class = InspectorSerializer
+
+# Se define la vista para listar un inspector por id
+class InspectorDetailView(generics.RetrieveAPIView):
     queryset = InspectorModelo.objects.all()
     serializer_class = InspectorSerializer
 
@@ -149,6 +159,11 @@ class ConductorView(generics.ListAPIView):
     queryset = ConductorModelo.objects.all()
     serializer_class = ConductorSerializer
 
+# Se define la vista para listar un conductor por id
+class ConductorDetailView(generics.RetrieveAPIView):
+    queryset = ConductorModelo.objects.all()
+    serializer_class = ConductorSerializer
+
 # Se define la vista para crear un conductor
 class ConductorCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -213,6 +228,11 @@ class VehiculoView(generics.ListAPIView):
     queryset = VehiculoModelo.objects.all()
     serializer_class = VehiculoSerializer
 
+# Se define la vista para listar un vehiculo por id
+class VehiculoDetailView(generics.RetrieveAPIView):
+    queryset = VehiculoModelo.objects.all()
+    serializer_class = VehiculoSerializer
+
 # Se define la vista para crear un vehiculo
 class VehiculoCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -233,6 +253,11 @@ class VehiculoDeleteView(generics.DestroyAPIView):
 
 # Se define la vista para listar los actas
 class ActaView(generics.ListAPIView):
+    queryset = ActaModelo.objects.all()
+    serializer_class = ActaSerializer
+
+# Se define la vista para listar un acta por id
+class ActaDetailView(generics.RetrieveAPIView):
     queryset = ActaModelo.objects.all()
     serializer_class = ActaSerializer
 
