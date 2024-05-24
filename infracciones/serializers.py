@@ -53,7 +53,6 @@ class InspectorSerializer(serializers.ModelSerializer):
         representation['foto'] = instance.foto.url
         return representation
 
-
 # Se define el serializer para actualizar el modelo inspector
 class InspectorUpdateSerializer(serializers.ModelSerializer):
     # Campos opcionales
