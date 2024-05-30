@@ -32,7 +32,6 @@ from .views import (
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 urlpatterns = [
-    # path('token', TokenObtainPairView.as_view()),
     path('usuarios/login', UsuarioLoginView.as_view()),
     path('usuarios/all', UsuarioView.as_view()),
     path('inspectores/all', IspectorView.as_view()),

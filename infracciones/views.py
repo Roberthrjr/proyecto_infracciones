@@ -1,5 +1,5 @@
+# Importamos los módulos necesarios de Django REST framework y otras bibliotecas
 from rest_framework import generics, status
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.permissions import IsAuthenticated
@@ -132,7 +132,6 @@ class InspectorDeleteView(generics.DestroyAPIView):
 class InspectorUploadFotoView(generics.GenericAPIView):
     # Se define la lista de permisos para esta vista
     permission_classes = [IsAuthenticated]
-    # Se define el queryset para esta vista
     serializer_class = InspectorSerializer
 
     # Se define el metodo post
@@ -273,7 +272,7 @@ class ActaCreateView(generics.CreateAPIView):
         # Obtenemos el id del inspector
         inspector_id = data.get('inspector')
         # Validamos que el inspector exista y este activo
-        try:
+        try: # Colocar Logica dentro del Try
             # Obtenemos el inspector
             inspector = InspectorModelo.objects.get(id=inspector_id)
             # Validamos que el inspector este activo

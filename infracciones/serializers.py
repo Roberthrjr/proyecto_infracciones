@@ -58,7 +58,7 @@ class InspectorUpdateSerializer(serializers.ModelSerializer):
     # Campos opcionales
     nombres = serializers.CharField(required=False)
     apellidos = serializers.CharField(required=False)
-    foto = serializers.ImageField(required=False)
+    foto = serializers.CharField(required=False)
     tipo_documento = serializers.CharField(required=False)
     numero_documento = serializers.CharField(required=False)
     ESTADO_CHOICES = [
@@ -87,7 +87,7 @@ class ConductorUpdateSerializer(serializers.ModelSerializer):
     # Campos opcionales
     nombres = serializers.CharField(required=False)
     apellidos = serializers.CharField(required=False)
-    foto = serializers.ImageField(required=False)
+    foto = serializers.CharField(required=False)
     tipo_documento = serializers.CharField(required=False)
     numero_documento = serializers.CharField(required=False)
     codigo_licencia = serializers.CharField(required=False)
